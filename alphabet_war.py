@@ -53,12 +53,12 @@ def fight(text):
     left = ((counter['w'] * 4) +
             (counter['p'] * 3) +
             (counter['b'] * 2) +
-            (counter['s'] * 1)
+            (counter['s'])
             )
     right = ((counter['m'] * 4) +
              (counter['q'] * 3) +
              (counter['d'] * 2) +
-             (counter['z'] * 1)
+             (counter['z'])
              )
 
     if left > right:
