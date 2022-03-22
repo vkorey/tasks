@@ -10,12 +10,21 @@ def main(numbers):
     >>> main([1, 2, 2, 5, 8])
     [160, 80, 80, 32, 20]
     """
+# v1
+    """
     result = []
     for i in range(len(numbers)):
         temp_numbers = numbers[:]
         del temp_numbers[i]
         result.append(multiply(temp_numbers))
-    return result
+    return result"""
+
+
+# v2
+    mult = multiply(numbers)
+    for i in range(len(numbers)):
+        numbers[i] = int(mult / numbers[i])
+    return (numbers)
 
 
 def multiply(list_):
