@@ -9,6 +9,10 @@ def main(numbers):
     [15, 3, 5]
     >>> main([1, 2, 2, 5, 8])
     [160, 80, 80, 32, 20]
+    >>> main([1, 2, 0, 5, 0])
+    [0, 0, 0, 0, 0]
+    >>> main([1, 2, 0, 5, 8])
+    [0, 0, 80, 0, 0]
     """
 # v1
     """
@@ -21,6 +25,20 @@ def main(numbers):
 
 
 # v2
+    nozeromult = 1
+    if len(numbers) == 1:
+        return numbers
+    if numbers.count(0) > 1:
+        return [0 for i in range(len(numbers))]
+    elif numbers.count(0) == 1:
+        for i in range(len(numbers)):
+            if numbers[i] != 0:
+                nozeromult *= numbers[i]
+                numbers[i] = 0
+            elif numbers[i] == 0:
+                zero = i
+        numbers[zero] = nozeromult
+        return numbers
     mult = multiply(numbers)
     for i in range(len(numbers)):
         numbers[i] = int(mult / numbers[i])
