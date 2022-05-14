@@ -4,7 +4,7 @@ def main(monsters):
     >>> main([(7, 15), (2, 14), (5, 3)])
     6
     """
-    count = []
+    """count = []
     for i in range(len(monsters)):
         next_dmg = 0
         shots = 0
@@ -15,7 +15,11 @@ def main(monsters):
             next_dmg = monsters[i][1]
         count.append(shots)
         monsters.append(monsters.pop(0))
-    return(min(count))
+    return(min(count))"""
+
+    for i in monsters:
+        
+
 
 
 if __name__ == '__main__':
