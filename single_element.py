@@ -1,3 +1,19 @@
+from tkinter.messagebox import NO
+
+
+def find_single(numbers, first, last):
+    if first >= last:
+        return -1
+    if first < last:
+        middle = (first + last) // 2
+    if numbers[middle] != numbers[middle - 1] and numbers[middle] != numbers[middle + 1]:
+        return numbers[middle]
+    elif numbers[middle] != numbers[middle - 1]:
+        find_single(numbers, first, middle - 2)
+    else:
+        find_single(numbers, middle + 2, last)
+    
+
 def main(numbers):
     """
     See https://leetcode.com/problems/single-element-in-a-sorted-array/
@@ -10,7 +26,7 @@ def main(numbers):
 
     Follow up: Your solution should run in O(log n) time and O(1) space.
 
-    >>> main([1, 1, 2, 3, 3, 4, 4, 8, 8])
+    >>> main([1, 1, 2, 3 ,3, 4, 4, 8, 8])
     2
     >>> main([3, 3, 7, 7, 10, 11, 11])
     10
@@ -20,20 +36,17 @@ def main(numbers):
     >>> main([1, 1, 2])
     2
     """
-    result = 0
     if len(numbers) == 0:
         return None
     elif len(numbers) == 1:
         return numbers[0]
-    elif len(numbers) == 3:
-        return numbers[2]
-    i = 0
-    while i < len(numbers):
-        if numbers[i] == numbers[i+1]:
-            i += 2
-        else:
-            return numbers[i]
-    return result
+    elif numbers[0] != numbers[1]:
+        return numbers[0]
+    elif numbers[len(numbers) - 1] != numbers[len(numbers) - 2]:
+        return numbers[len(numbers) - 1]
+ 
+    print(find_single(numbers,0,len(numbers) - 1))
+
 
 
 if __name__ == '__main__':
