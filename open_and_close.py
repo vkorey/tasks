@@ -58,7 +58,7 @@ def is_balanced(text):
     for char in text:
         if char == '(':
             s.push(char)
-        if char == ')':
+        elif char == ')':
             if s.pop() is False:
                 return False
     if s.size() == 0:
