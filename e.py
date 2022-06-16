@@ -29,7 +29,6 @@ def main(text: str) -> int:
     """
 
     s = Stack()
-    text = list(text)
 
     error_counter = 0
     for char in text:
