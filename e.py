@@ -26,6 +26,10 @@ def main(text: str) -> int:
     1
     >>> main("(s))a((b + c)) = ab + bc")
     3
+    >>> main(")b + c = ab + bc")
+    1
+    >>> main(")b + (c = ab + (bc)")
+    -1
     """
 
     s = Stack()
@@ -40,9 +44,9 @@ def main(text: str) -> int:
 
     stack_size = s.size()
 
-    if error_counter == 1:
+    if error_counter == 1 and stack_size == 0:
         return (text.index(')') + 1)
-    elif stack_size == 1:
+    elif stack_size == 1 and error_counter == 0:
         return (text.index('(') + 1)
     else:
         return -1
