@@ -14,7 +14,7 @@ class Stack:
         return len(self.stack)
 
 
-def main(text: str):
+def main(text: str) -> int:
     """
     >>> main("a + b = b + a")
     -1
