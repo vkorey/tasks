@@ -1,35 +1,54 @@
-from typing import List
+class Stack:
+    def __init__(self):
+        self.stack = []
+
+    def push(self, item):
+        self.stack.append(item)
+
+    def pop(self):
+        if len(self.stack) == 0:
+            return False
+        self.stack.pop()
+
+    def size(self):
+        return len(self.stack)
 
 
-def main(input_string: str) -> List[str]:
+def main(text: str):
     """
-    >>> main("a + b = b + a =")
+    >>> main("a + b = b + a")
     -1
+    >>> main("d + (a + (b + c) = (a + b) + c + d")
+    5
+    >>> main("(a((b + c) = ab + bc")
+    -1
+    >>> main(")a((b + c)) = ab + bc")
+    1
+    >>> main("(s))a((b + c)) = ab + bc")
+    3
     """
-    input_string = list(input_string)
-    if "(" or ")" not in input_string:
+
+    s = Stack()
+    text = list(text)
+
+    error_counter = 0
+    for char in text:
+        if char == '(':
+            s.push(char)
+        elif char == ')':
+            if s.pop() is False:
+                error_counter += 1
+
+    stack_size = s.size()
+
+    if error_counter == 1:
+        return (text.index(')') + 1)
+    elif stack_size == 1:
+        return (text.index('(') + 1)
+    else:
         return -1
-    n = 0
-
-    eq = find_eq(input_string)
-
-    for i in input_string[::eq]:
-        scob_count = 0
-        if input_string[i] == '(':
-            scob_count += 1
-        if input_string[i] == ')':
-            scob_count -= 1
-    
-    
-
-    if "=" in input_string:
-        while n < len(input_string):
-            pass
 
 
-def get_sequence(input_string):
-    pass
-
-
-def find_eq(input_string) -> int:
-    return input_string.index('=')
+if __name__ == '__main__':
+    import doctest
+    failures, errors = doctest.testmod()
