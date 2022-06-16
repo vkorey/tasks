@@ -30,6 +30,8 @@ def main(text: str) -> int:
     1
     >>> main(")b + (c = ab + (bc)")
     -1
+    >>> main("(((b + (c))))) = ab + (bc)")
+    10
     """
 
     s = Stack()
