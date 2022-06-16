@@ -55,10 +55,10 @@ def is_balanced(text):
     """
     s = Stack()
 
-    for i in range(len(text)):
-        if text[i] == '(':
-            s.push(i)
-        if text[i] == ')':
+    for char in text:
+        if char == '(':
+            s.push(char)
+        if char == ')':
             if s.pop() is False:
                 return False
     if s.size() == 0:
